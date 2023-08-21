@@ -1,0 +1,60 @@
+
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href='{% static "assets/favicon.ico"%}' />
+        <!-- Bootstrap Icons-->
+        <link href='{% static "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"%}' rel="stylesheet"  />
+        <!-- Google fonts-->
+        <link href='{% static "https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"%}' rel="stylesheet"/>
+        <link href='{% static "https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"%}' rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href='{% static "https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"%}' rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href='{% static "css/styles.css"%}' rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class = "container-fluid">
+            <div class="card card-body mt-5" style="background-color: rgba(255, 255, 255, 0.674);">
+            <!-- <img src="{% static 'picture2.jpg' %}" class="img-circle" alt="Cinque Terre"> -->
+            <h1 class = 'text-center'>View the List</h1>
+            <style>
+                .container-fluid {
+                    background-image: url("{% static 'picture2.jpg' %}");
+                    /* Other background properties can be added here */
+                    height: 100vh;
+                    overflow: hidden;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+
+                }
+            </style>
+        <form method="POST", action="#">
+            {% csrf_token %}
+        <h2>{{ls.name}}</h2>
+        <ul>
+            {% for item in ls.item_set.all %}
+                {% if item.complete == True %}
+                <li><input type="checkbox", value="clicked", name="c{{item.id}}" checked> {{item.text}}</li>
+                {% else %}
+                <li><input type="checkbox", value="clicked", name="c{{item.id}}"> {{item.text}}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <button class='btn-dark' type="submit" value="newItem" name="newItem">submit</button>
+        <input type="text" name="new" placeholder="Add an item...">
+        <button class = 'btn-dark' type="submit" value="save" name="save">Save</button>
+        <a href = '/create'><button type="button" class="btn btn-link">Back</button></a>
+        </div>  
+        
+        </form>
+        </div>
+    </body>
+</html>
+{% endblock %}
+
+

@@ -1,0 +1,55 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- <form method="POST",class = "form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Login</button> -->
+    </form>
+    <div class="container-fluid">
+      <style>
+        .container-fluid {
+            background-image: url("{% static 'pic3.jpg' %}");
+            /* Other background properties can be added here */
+            height: 100vh;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+        }
+    </style>
+      <div  class= "rounded float-right" style="width: 10%; height: 10%; margin-right: 45%; margin-top: 50px; background-color: black;">
+        <a href ="/"><img  src="{% static 'pic5.jpg' %}" 
+          class="img-fluid" alt="Sample image"></a>
+      </div>
+        <div class="right">
+          <!-- col-md-6 col-lg-5 col-xl-3 -->
+          <!-- <div  class= "rounded float-left" style="width: 500px; height: 500px; margin-left: 500px; margin-top: 100px;"> -->
+            <div class="card mx-auto " style="background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(2px); border: 2px solid rgb(127, 57, 57); padding: 1.5em .5em .5em;
+            border-radius: 2em;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            width: 30%;
+            margin-top: 200px; 
+            ">
+              <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i> LOGIN</h1>
+              <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary btn-success">LOGIN</button>
+              </form>
+              <p class="lead mt-4">Don't Have An Account? <a href="/register">Register</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
