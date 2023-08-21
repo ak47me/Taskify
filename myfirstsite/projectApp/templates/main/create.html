@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-7 col-lg-7 col-xl-7">
+      <div class="card card-body mt-5" id="card">
+        <h2 class="text-center mb-2" id="create" style="color: red; font-style: italic; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i class="fas fa-user-plus"></i> Create New To Do List</h2>
+        <form method="POST" action="/create/">
+          {% csrf_token %}
+          <div style="color: rgba(17, 158, 165, 0.861);"> <!-- Change text color within a div -->
+            {{ form.as_p }}
+          </div>
+          <button type="submit" class="btn btn-primary btn-success">Create</button>
+        </form>
+      </div>
+    </div>
+</div>
+<style>
+  #create {
+    color: rgb(195, 100, 33);
+    font-family: 'Times New Roman', Times, serif;
+  }
+  #card {
+    background-color: #a0a1af4a;
+  }
+</style>
+{% endblock %}
+ 

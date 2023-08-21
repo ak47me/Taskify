@@ -1,0 +1,93 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #f0f0f076;
+  }
+
+  .header {
+    background: rgba(86, 106, 188, 0.377);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(86, 107, 188, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .header h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+
+  .header p {
+    color: #666;
+    font-size: 18px;
+  }
+
+  .list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px; /* Limit the maximum width of the grid */
+    margin: 0 auto; /* Center the grid */
+  }
+
+  .list-item {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .list-item h2 {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+
+  .list-item p {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .list-item a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+<div class="container">
+  <div class="header">
+    <h1>Your To-Do Lists</h1>
+    <p>Stay organized and get things done</p>
+  </div>
+  <div class="list-container">
+    {% for td in user.todolist.all %}
+      <div class="list-item">
+        <a href="/{{ td.id }}">
+          <h2>{{ td.name }}</h2>
+          <p>{{ td.description }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
